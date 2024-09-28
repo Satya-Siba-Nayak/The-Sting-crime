@@ -64,10 +64,10 @@ void playDiceGame(int *wallet) {
 
         dice1 = rand() % 6 + 1; 
         dice2 = rand() % 6 + 1; 
-        printf("You rolled a %d and a %d.\n", dice1, dice2);
+        printf("You rolled a %d and a %f.\n", dice1, dice2);
 
         if (dice1 + dice2 > 7) {
-            printf("You win! You get %d.\n", bet * 1.5); // Adjusted winnings
+            printf("You win! You get %f.\n", bet * 1.5); // Adjusted winnings
             *wallet += bet * 1.5; 
         } else {
             printf("You lose! You lose your bet of %d.\n", bet);
@@ -93,10 +93,10 @@ void playCoinFlipGame(int *wallet) {
     printf("The coin flip result is %c.\n", result);
 
     if (guess == result) {
-        printf("Congratulations! You guessed right. You win %d!\n", bet * 1.9); // Adjusted winnings
+        printf("Congratulations! You guessed right. You win %f!\n", bet * 1.9); // Adjusted winnings
         *wallet += bet * 1.9; 
     } else {
-        printf("Sorry, you guessed wrong. You lose your bet of %d.\n", bet);
+        printf("Sorry, you guessed wrong. You lose your bet of %f.\n", bet);
         *wallet -= bet;
     }
 }
