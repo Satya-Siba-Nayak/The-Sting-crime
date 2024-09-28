@@ -70,7 +70,7 @@ void playDiceGame(int *wallet) {
             printf("You win! You get %f.\n", bet * 1.5); // Adjusted winnings
             *wallet += bet * 1.5; 
         } else {
-            printf("You lose! You lose your bet of %f.\n", bet);
+            printf("You lose! You lose your bet of %d.\n", bet);
             *wallet -= bet;
         }
 }
