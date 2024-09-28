@@ -96,7 +96,7 @@ void playCoinFlipGame(int *wallet) {
         printf("Congratulations! You guessed right. You win %f!\n", bet * 1.9); // Adjusted winnings
         *wallet += bet * 1.9; 
     } else {
-        printf("Sorry, you guessed wrong. You lose your bet of %f.\n", bet);
+        printf("Sorry, you guessed wrong. You lose your bet of %d.\n", bet);
         *wallet -= bet;
     }
 }
