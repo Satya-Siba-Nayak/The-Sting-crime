@@ -42,3 +42,5 @@ Feel free to contribute to this project by:
 * Adding new games
 * Implementing deposit and withdraw features
 * Improving the game logic or user interface
+
+Enjoy Have Fun!!
