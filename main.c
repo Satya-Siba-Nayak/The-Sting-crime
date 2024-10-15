@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+//Function to Display to main Menu
 void displayMainMenu() {
     printf("\n--- Gambling Game Main Menu ---\n");
     printf("1. Play Games\n");
