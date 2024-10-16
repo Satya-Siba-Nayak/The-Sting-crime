@@ -70,7 +70,7 @@ void playNumberGuessingGame(int *wallet) {
         *wallet -= bet;
     }
 }
-
+//Dice Roll
 void playDiceGame(int *wallet) {
     int bet, dice1, dice2;
     printf("Enter your bet amount: ");
