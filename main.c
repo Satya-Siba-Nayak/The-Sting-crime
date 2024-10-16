@@ -16,7 +16,7 @@ void playCoinFlipGame(int *wallet);
 void playBlackjack(int *wallet);
 void playPoker(int *wallet);
 void clearInputBuffer();
-
+//Main menu
 void displayMainMenu() {
     printf("\n--- Gambling Game Main Menu ---\n");
     printf("1. Play Games\n");
@@ -26,7 +26,7 @@ void displayMainMenu() {
     printf("5. Exit\n");
     printf("Enter your choice: ");
 }
-
+//Game Menu
 void displayGamesMenu() {
     printf("\n--- Games Menu ---\n");
     printf("1. Number Guessing\n");
