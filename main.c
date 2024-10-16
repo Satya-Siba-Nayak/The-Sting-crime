@@ -37,7 +37,7 @@ void displayGamesMenu() {
     printf("6. Back to Main Menu\n");
     printf("Enter your choice: ");
 }
-
+//card value
 int getCardValue() {
     int card = rand() % 13 + 1;
     return (card > 10) ? 10 : card;
@@ -47,7 +47,7 @@ void clearInputBuffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF) {}
 }
-
+//Number Guessing
 void playNumberGuessingGame(int *wallet) {
     int bet, number, guess;
     printf("Enter your bet amount: ");
