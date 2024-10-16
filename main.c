@@ -93,7 +93,7 @@ void playDiceGame(int *wallet) {
         *wallet -= bet;
     }
 }
-
+//coin Flip
 void playCoinFlipGame(int *wallet) {
     int bet;
     char guess, result;
