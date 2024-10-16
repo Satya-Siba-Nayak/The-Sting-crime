@@ -120,7 +120,7 @@ void playCoinFlipGame(int *wallet) {
         *wallet -= bet;
     }
 }
-
+//blackjack
 void playBlackjack(int *wallet) {
     int bet, playerTotal = 0, dealerTotal = 0;
     char choice;
