@@ -199,7 +199,7 @@ void playPoker(int *wallet) {
     }
 }
 
-
+//main Funtion
 int main() {
     int wallet = INITIAL_WALLET;
     srand(time(0));
