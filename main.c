@@ -174,7 +174,7 @@ void playBlackjack(int *wallet) {
     }
 }
 
-
+//poker
 void playPoker(int *wallet) {
     int bet;
     printf("Enter your bet amount: ");
