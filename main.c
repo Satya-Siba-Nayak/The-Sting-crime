@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <ctype.h>
-//Definations
+//Defining Macros 
 #define INITIAL_WALLET 1000
 #define NUM_GAMES 5
 
