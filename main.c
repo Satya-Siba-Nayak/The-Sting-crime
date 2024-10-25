@@ -16,7 +16,7 @@
 // Structures
 typedef struct {
     int value;
-    char suit;
+    char suit;    // Using H, D, C, S for Hearts, Diamonds, Clubs, Spades
     char rank;
 } Card;
 
@@ -48,8 +48,8 @@ void playPoker(int* wallet);
 
 // Utility functions
 void initializeDeck(Card deck[]) {
-    char suits[] = {'♥', '♦', '♣', '♠'};
-    char ranks[] = {'A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K'};
+    const char suits[] = {'H', 'D', 'C', 'S'};  // ASCII-safe suit characters
+    const char ranks[] = {'A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K'};
     int index = 0;
     
     for (int s = 0; s < NUM_SUITS; s++) {
@@ -72,14 +72,23 @@ void shuffleDeck(Card deck[]) {
     }
 }
 
+const char* getSuitSymbol(char suit) {
+    switch(suit) {
+        case 'H': return "<3";  // Hearts
+        case 'D': return "<>";  // Diamonds
+        case 'C': return "{}";  // Clubs
+        case 'S': return "^";   // Spades
+        default: return "?";
+    }
+}
+
 void displayCard(Card card) {
-    printf("[%c%c]", card.rank, card.suit);
+    printf("[%c%s] ", card.rank, getSuitSymbol(card.suit));
 }
 
 void displayHand(Hand* hand) {
     for (int i = 0; i < hand->numCards; i++) {
         displayCard(hand->cards[i]);
-        printf(" ");
     }
     printf("\n");
 }
@@ -88,7 +97,12 @@ int getBet(int wallet) {
     int bet;
     do {
         printf("Enter bet amount ($%d-$%d): $", MIN_BET, MAX_BET);
-        scanf("%d", &bet);
+        if (scanf("%d", &bet) != 1) {
+            clearInputBuffer();
+            printf("Invalid input. Please enter a number.\n");
+            bet = 0;
+            continue;
+        }
         clearInputBuffer();
         
         if (bet < MIN_BET || bet > MAX_BET) {
@@ -108,15 +122,21 @@ void clearInputBuffer() {
 
 bool playAgain() {
     char choice;
-    printf("Play again? (y/n): ");
-    scanf(" %c", &choice);
-    clearInputBuffer();
-    return tolower(choice) == 'y';
+    do {
+        printf("Play again? (y/n): ");
+        scanf(" %c", &choice);
+        clearInputBuffer();
+        choice = tolower(choice);
+        if (choice != 'y' && choice != 'n') {
+            printf("Please enter 'y' or 'n'.\n");
+        }
+    } while (choice != 'y' && choice != 'n');
+    return choice == 'y';
 }
 
 // Menu implementations
 void displayMainMenu() {
-    printf("\n=== 🎰 Casino Royal ===\n");
+    printf("\n=== Casino Royal ===\n");
     printf("1. Play Games\n");
     printf("2. Check Wallet\n");
     printf("3. Deposit Funds\n");
@@ -125,7 +145,7 @@ void displayMainMenu() {
 }
 
 void displayGamesMenu() {
-    printf("\n=== 🎲 Games Menu ===\n");
+    printf("\n=== Games Menu ===\n");
     printf("1. Number Guessing\n");
     printf("2. Dice Game\n");
     printf("3. Coin Flip\n");
@@ -138,7 +158,12 @@ int getMenuChoice(int min, int max) {
     int choice;
     do {
         printf("Enter your choice (%d-%d): ", min, max);
-        scanf("%d", &choice);
+        if (scanf("%d", &choice) != 1) {
+            clearInputBuffer();
+            printf("Invalid input. Please enter a number.\n");
+            choice = -1;
+            continue;
+        }
         clearInputBuffer();
         
         if (choice < min || choice > max) {
@@ -151,25 +176,38 @@ int getMenuChoice(int min, int max) {
 
 // Game implementations
 void playNumberGuessingGame(int* wallet) {
-    printf("\n=== 🔢 Number Guessing Game ===\n");
+    printf("\n=== Number Guessing Game ===\n");
     printf("Guess a number between 1-10. Win 9x your bet!\n");
     
     do {
         int bet = getBet(*wallet);
         int number = rand() % 10 + 1;
         int guess;
+        bool validInput = false;
         
-        printf("Enter your guess (1-10): ");
-        scanf("%d", &guess);
-        clearInputBuffer();
+        do {
+            printf("Enter your guess (1-10): ");
+            if (scanf("%d", &guess) != 1) {
+                clearInputBuffer();
+                printf("Invalid input. Please enter a number.\n");
+                continue;
+            }
+            clearInputBuffer();
+            
+            if (guess < 1 || guess > 10) {
+                printf("Please enter a number between 1 and 10.\n");
+            } else {
+                validInput = true;
+            }
+        } while (!validInput);
         
         if (guess == number) {
             int winnings = bet * 9;
-            printf("🎉 Congratulations! The number was %d!\n", number);
+            printf("Congratulations! The number was %d!\n", number);
             printf("You won $%d!\n", winnings);
             *wallet += winnings;
         } else {
-            printf("❌ Sorry, the number was %d.\n", number);
+            printf("Sorry, the number was %d.\n", number);
             printf("You lost $%d.\n", bet);
             *wallet -= bet;
         }
@@ -179,7 +217,7 @@ void playNumberGuessingGame(int* wallet) {
 }
 
 void playBlackjack(int* wallet) {
-    printf("\n=== ♠️ Blackjack ===\n");
+    printf("\n=== Blackjack ===\n");
     Card deck[MAX_CARDS];
     Hand playerHand = {0};
     Hand dealerHand = {0};
@@ -202,23 +240,31 @@ void playBlackjack(int* wallet) {
         
         printf("Your hand: ");
         displayHand(&playerHand);
-        printf("Dealer shows: [%c%c] [??]\n", 
-               dealerHand.cards[0].rank, dealerHand.cards[0].suit);
+        printf("Dealer shows: ");
+        displayCard(dealerHand.cards[0]);
+        printf("[??]\n");
         
         // Player's turn
         while (playerTotal < 21) {
             char choice;
-            printf("Hit (h) or Stand (s)? ");
-            scanf(" %c", &choice);
-            clearInputBuffer();
+            do {
+                printf("Hit (h) or Stand (s)? ");
+                scanf(" %c", &choice);
+                clearInputBuffer();
+                choice = tolower(choice);
+                
+                if (choice != 'h' && choice != 's') {
+                    printf("Please enter 'h' or 's'.\n");
+                }
+            } while (choice != 'h' && choice != 's');
             
-            if (tolower(choice) == 'h') {
+            if (choice == 'h') {
                 playerHand.cards[playerHand.numCards] = deck[cardIndex++];
                 playerHand.numCards++;
                 playerTotal += playerHand.cards[playerHand.numCards-1].value;
                 printf("Your hand: ");
                 displayHand(&playerHand);
-            } else if (tolower(choice) == 's') {
+            } else {
                 break;
             }
         }
@@ -263,10 +309,10 @@ void playBlackjack(int* wallet) {
 // Main function
 int main() {
     int wallet = INITIAL_WALLET;
-    srand(time(0));
+    srand((unsigned int)time(NULL));
     bool running = true;
     
-    printf("Welcome to Casino Royal! 🎰\n");
+    printf("Welcome to Casino Royal!\n");
     printf("Starting wallet: $%d\n", wallet);
     
     while (running) {
@@ -301,13 +347,13 @@ int main() {
                 } while (choice != 6 && wallet >= MIN_BET);
                 
                 if (wallet < MIN_BET) {
-                    printf("❌ Insufficient funds to continue playing.\n");
+                    printf("Insufficient funds to continue playing.\n");
                     printf("Please deposit more money to continue.\n");
                 }
                 break;
             }
             case 2:
-                printf("💰 Current wallet balance: $%d\n", wallet);
+                printf("Current wallet balance: $%d\n", wallet);
                 break;
             case 3:
                 printf("Deposit functionality coming soon!\n");
