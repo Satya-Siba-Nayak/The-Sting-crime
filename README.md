@@ -1,46 +1,107 @@
-# The-Sting-crime
-# Casino Games Simulator
+# Casino Royal 🎰
 
-This is a C program that simulates a variety of casino games, allowing users to play and test their luck. The games currently included are:
-
-* Number Guessing
-* Dice Game
-* Coin Flip
-* Blackjack (Simplified)
-* Poker (Simplified)
-
-## How to Play
-
-1. **Compile the code:**
-   * Make sure you have a C compiler installed (like GCC).
-   * Compile the code using a command like: `gcc casino_games.c -o casino_games` (replace `casino_games.c` with your actual filename)
-
-2. **Run the executable:**
-   * Execute the compiled program: `./casino_games`
-
-3. **Navigate the menus:**
-   * The program will present a main menu with options to play games, check your wallet balance, or exit.
-   * Choose "Play Games" to see the list of available games.
-   * Select a game and follow the on-screen instructions to place your bets and play.
+A text-based casino gaming system implemented in C, featuring multiple classic casino games with a simple betting interface and wallet management system.
 
 ## Features
 
-* **Multiple Games:** Offers a variety of games to choose from.
-* **Wallet System:** Tracks your virtual money balance.
-* **Simple Interface:** Easy-to-understand menus and instructions.
+- 🎮 Multiple Casino Games:
+  - Number Guessing (1-10)
+  - Dice Rolling
+  - Coin Flip
+  - Blackjack
+  - Simple Poker
 
-## Notes
+- 💰 Wallet System:
+  - Starting balance: $1,000
+  - Minimum bet: $10
+  - Maximum bet: $500
+  - Real-time balance tracking
+  - (Coming soon: Deposit and withdrawal functionality)
 
-* **Deposit and Withdraw:** The deposit and withdraw functionalities are not yet implemented.
-* **Simplified Games:** Some games have simplified rules for easier implementation.
-* **Randomness:** The games use the `rand()` function for random number generation.
+- 🎲 Game Features:
+  - Full deck of cards implementation
+  - ASCII-based card display
+  - Shuffling mechanism
+  - Basic betting system
+  - Win/loss tracking
+
+## Game Rules
+
+### Number Guessing
+- Guess a number between 1-10
+- Win 9x your bet for correct guesses
+
+### Dice Game
+- Roll two dice
+- Win 1.5x your bet if total is higher than 7
+
+### Coin Flip
+- Choose heads or tails
+- Win 1.9x your bet for correct guesses
+
+### Blackjack
+- Classic blackjack rules
+- Player vs Dealer
+- Hit or Stand options
+- Dealer must hit on 16 and below
+
+### Simple Poker
+- 5-card poker
+- Highest card wins
+- Double your bet on winning
+
+## Technical Details
+
+### Prerequisites
+- C compiler (GCC recommended)
+- Standard C libraries:
+  - stdio.h
+  - stdlib.h
+  - time.h
+  - ctype.h
+  - stdbool.h
+  - string.h
+
+### Compilation
+```bash
+gcc -o casino_royal main.c
+```
+
+### Running the Program
+```bash
+./casino_royal
+```
+
+## Code Structure
+
+- Card and Hand structures for card games
+- Modular design with separate functions for each game
+- Menu-driven interface
+- Input validation and error handling
+- Clean user interface with ASCII graphics
+
+## Future Enhancements
+
+- [ ] Implement deposit and withdrawal system
+- [ ] Add more sophisticated poker hand evaluations
+- [ ] Implement split and double down in Blackjack
+- [ ] Add multiplayer support
+- [ ] Include game statistics and history
+- [ ] Add more casino games (Roulette, Slots, etc.)
 
 ## Contributing
 
 Feel free to contribute to this project by:
+1. Forking the repository
+2. Creating your feature branch
+3. Committing your changes
+4. Pushing to the branch
+5. Opening a Pull Request
 
-* Adding new games
-* Implementing deposit and withdraw features
-* Improving the game logic or user interface
+## License
 
-Enjoy Have Fun!!
+This project is available under the MIT License. Feel free to use, modify, and distribute as you see fit.
+
+## Disclaimer
+
+This is a simulation game for entertainment purposes only. No real money is involved or should be used with this program.
