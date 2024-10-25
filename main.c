@@ -305,7 +305,142 @@ void playBlackjack(int* wallet) {
         printf("Current wallet: $%d\n", *wallet);
     } while (*wallet >= MIN_BET && playAgain());
 }
+// Add these implementations before the main function:
 
+void playDiceGame(int* wallet) {
+    printf("\n=== Dice Game ===\n");
+    printf("Roll higher than 7 to win 1.5x your bet!\n");
+    
+    do {
+        int bet = getBet(*wallet);
+        printf("Rolling the dice...\n");
+        
+        int dice1 = (rand() % 6) + 1;
+        int dice2 = (rand() % 6) + 1;
+        int total = dice1 + dice2;
+        
+        printf("You rolled: %d + %d = %d\n", dice1, dice2, total);
+        
+        if (total > 7) {
+            int winnings = (int)(bet * 1.5);
+            printf("Congratulations! You win $%d!\n", winnings);
+            *wallet += winnings;
+        } else {
+            printf("Sorry, you lose $%d.\n", bet);
+            *wallet -= bet;
+        }
+        
+        printf("Current wallet: $%d\n", *wallet);
+    } while (*wallet >= MIN_BET && playAgain());
+}
+
+void playCoinFlipGame(int* wallet) {
+    printf("\n=== Coin Flip ===\n");
+    printf("Guess heads or tails to win 1.9x your bet!\n");
+    
+    do {
+        int bet = getBet(*wallet);
+        char guess;
+        bool validGuess = false;
+        
+        do {
+            printf("Enter your guess (h for heads, t for tails): ");
+            scanf(" %c", &guess);
+            clearInputBuffer();
+            guess = tolower(guess);
+            
+            if (guess != 'h' && guess != 't') {
+                printf("Invalid input. Please enter 'h' or 't'.\n");
+            } else {
+                validGuess = true;
+            }
+        } while (!validGuess);
+        
+        char result = (rand() % 2) == 0 ? 'h' : 't';
+        printf("The coin shows: %s\n", result == 'h' ? "heads" : "tails");
+        
+        if (guess == result) {
+            int winnings = (int)(bet * 1.9);
+            printf("Congratulations! You win $%d!\n", winnings);
+            *wallet += winnings;
+        } else {
+            printf("Sorry, you lose $%d.\n", bet);
+            *wallet -= bet;
+        }
+        
+        printf("Current wallet: $%d\n", *wallet);
+    } while (*wallet >= MIN_BET && playAgain());
+}
+
+void playPoker(int* wallet) {
+    printf("\n=== Simple Poker ===\n");
+    printf("Get a better hand than the dealer to win!\n");
+    
+    Card deck[MAX_CARDS];
+    Hand playerHand = {0};
+    Hand dealerHand = {0};
+    
+    do {
+        int bet = getBet(*wallet);
+        initializeDeck(deck);
+        shuffleDeck(deck);
+        
+        // Deal 5 cards to each player
+        for (int i = 0; i < 5; i++) {
+            playerHand.cards[i] = deck[i];
+            dealerHand.cards[i] = deck[i + 5];
+        }
+        playerHand.numCards = dealerHand.numCards = 5;
+        
+        // Show hands
+        printf("\nYour hand: ");
+        displayHand(&playerHand);
+        printf("Dealer's hand: ");
+        displayHand(&dealerHand);
+        
+        // Simple winning condition based on highest card
+        int playerHighest = 0;
+        int dealerHighest = 0;
+        
+        for (int i = 0; i < 5; i++) {
+            if (playerHand.cards[i].value > playerHighest) {
+                playerHighest = playerHand.cards[i].value;
+            }
+            if (dealerHand.cards[i].value > dealerHighest) {
+                dealerHighest = dealerHand.cards[i].value;
+            }
+        }
+        
+        printf("\nYour highest card: ");
+        for (int i = 0; i < 5; i++) {
+            if (playerHand.cards[i].value == playerHighest) {
+                displayCard(playerHand.cards[i]);
+                break;
+            }
+        }
+        
+        printf("\nDealer's highest card: ");
+        for (int i = 0; i < 5; i++) {
+            if (dealerHand.cards[i].value == dealerHighest) {
+                displayCard(dealerHand.cards[i]);
+                break;
+            }
+        }
+        printf("\n");
+        
+        if (playerHighest > dealerHighest) {
+            printf("You win! You get $%d!\n", bet * 2);
+            *wallet += bet * 2;
+        } else if (playerHighest < dealerHighest) {
+            printf("Dealer wins! You lose $%d.\n", bet);
+            *wallet -= bet;
+        } else {
+            printf("It's a tie! Your bet is returned.\n");
+        }
+        
+        printf("Current wallet: $%d\n", *wallet);
+    } while (*wallet >= MIN_BET && playAgain());
+}
 // Main function
 int main() {
     int wallet = INITIAL_WALLET;
