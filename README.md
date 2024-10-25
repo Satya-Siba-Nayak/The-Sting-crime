@@ -1,14 +1,14 @@
-# 🎰 Casino Royal
+# 🎰 The Sting - A Casino Crime
 
 <div align="center">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Language](https://img.shields.io/badge/language-C-blue.svg)](https://en.cppreference.com/w/c/language)
-[![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows%20%7C%20macOS-lightgrey.svg)](https://github.com/yourusername/casino-royal)
+[![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows%20%7C%20macOS-lightgrey.svg)](https://github.com/Satya-Siba-Nayak/The-Sting-crime)
 
-A sophisticated command-line casino gaming system implemented in C, featuring multiple classic casino games with realistic odds, comprehensive betting mechanics, and an intuitive user interface.
+A sophisticated command-line casino gaming system implemented in C, featuring multiple classic casino games. Experience the thrill of gambling without the risk!
 
-[Features](#features) • [Games](#available-games) • [Installation](#installation) • [Usage](#usage) • [Architecture](#architecture) • [Contributing](#contributing)
+[Features](#features) • [Games](#available-games) • [Installation](#installation) • [Usage](#usage) • [Contributing](#contributing)
 
 </div>
 
@@ -16,13 +16,9 @@ A sophisticated command-line casino gaming system implemented in C, featuring mu
 
 - [Features](#features)
 - [Available Games](#available-games)
-- [Technical Requirements](#technical-requirements)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Game Rules](#game-rules)
-- [Architecture](#architecture)
-- [Development](#development)
-- [Testing](#testing)
 - [Contributing](#contributing)
 - [License](#license)
 - [Disclaimer](#disclaimer)
@@ -30,160 +26,80 @@ A sophisticated command-line casino gaming system implemented in C, featuring mu
 ## ✨ Features
 
 ### Core Features
-- 🎮 Multiple classic casino games in one application
-- 💰 Comprehensive wallet management system
-- 🎲 Realistic card deck implementation with shuffling
+- 🎮 5 Classic Casino Games:
+  - Number Guessing
+  - Dice Game
+  - Coin Flip
+  - Blackjack
+  - Poker
+- 💰 Virtual Wallet System ($1,000 starting balance)
+- 🎲 Realistic card deck implementation
 - 📊 Real-time balance tracking
-- ⚡ Fast and responsive command-line interface
-- 🛡️ Input validation and error handling
-- 🔄 Continuous game flow with play-again options
+- ⚡ User-friendly command-line interface
+- 🛡️ Robust input validation
 
-### Wallet System
-- 💵 Starting balance: $1,000
-- 📊 Betting range: $10 - $500
+### Betting System
+- 💵 Initial Wallet: $1,000
+- 📊 Minimum Bet: $10
+- 💫 Maximum Bet: $500
 - 📈 Real-time balance updates
-- 🏦 (Coming soon: Deposit/withdrawal system)
-
-### Technical Features
-- 🔧 Modular code architecture
-- 🎴 Advanced card game mechanics
-- 🎲 True random number generation
-- 📝 Comprehensive input validation
-- 🔍 Memory-efficient design
-- 🛠️ Easy to extend and modify
 
 ## 🎮 Available Games
 
 ### 1. Number Guessing
-```
-=== Number Guessing Game ===
-Guess a number between 1-10. Win 9x your bet!
-Enter bet amount ($10-$500): $100
-Enter your guess (1-10): 7
-```
-- **Odds**: 1 in 10
-- **Payout**: 9x bet amount
-- **Strategy**: Pure luck-based game
+- Guess a number between 1-10
+- Win 9x your bet amount
+- Perfect for beginners!
 
 ### 2. Dice Game
-```
-=== Dice Game ===
-Roll higher than 7 to win 1.5x your bet!
-Rolling the dice...
-You rolled: 4 + 5 = 9
-Congratulations! You win $150!
-```
-- **Odds**: 41.67% chance to win
-- **Payout**: 1.5x bet amount
-- **Strategy**: Statistical probability game
+- Roll higher than 7 to win
+- 1.5x payout on wins
+- Based on classic craps
 
 ### 3. Coin Flip
-```
-=== Coin Flip ===
-Guess heads or tails to win 1.9x your bet!
-Enter your guess (h for heads, t for tails): h
-The coin shows: heads
-Congratulations! You win $190!
-```
-- **Odds**: 50% chance
-- **Payout**: 1.9x bet amount
-- **Strategy**: Simple probability game
+- Choose heads or tails
+- 1.9x payout on correct guess
+- Simple yet exciting!
 
 ### 4. Blackjack
-```
-=== Blackjack ===
-Your hand: [A♥] [J♣]
-Dealer shows: [7♠] [??]
-Hit (h) or Stand (s)?
-```
-- **Features**:
-  - Full deck implementation
-  - ASCII card display
-  - Hit/Stand options
-  - Dealer AI
-- **Rules**:
-  - Beat the dealer's hand without going over 21
-  - Aces worth 1 or 11
-  - Face cards worth 10
-  - Dealer must hit on 16 and below
-- **Payout**: 1:1 on wins
+- Classic casino card game
+- Beat the dealer without going over 21
+- Full ASCII card display
 
-### 5. Simple Poker
-```
-=== Simple Poker ===
-Your hand: [K♠] [Q♥] [J♦] [10♣] [9♠]
-Dealer's hand: [K♣] [Q♦] [J♥] [8♠] [7♣]
-```
-- **Features**:
-  - 5-card poker
-  - Full deck visualization
-  - Hand comparison system
-- **Payout**: 2x bet amount on win
-
-## 🔧 Technical Requirements
-
-### System Requirements
-- Operating System:
-  - Linux (Any modern distribution)
-  - Windows 7 or higher
-  - macOS 10.12 or higher
-- Memory: Minimum 1MB RAM
-- Disk Space: 1MB free space
-
-### Development Requirements
-- C Compiler (one of the following):
-  ```bash
-  # GCC (Linux/macOS)
-  gcc --version  # Required: 4.8.1 or higher
-
-  # Microsoft Visual C++ (Windows)
-  cl.exe /?     # Visual Studio 2015 or higher
-
-  # Clang
-  clang --version  # 3.3 or higher
-  ```
-- Required Libraries:
-  ```c
-  #include <stdio.h>    // Standard I/O operations
-  #include <stdlib.h>   // Standard library functions
-  #include <time.h>     // Time operations for RNG
-  #include <ctype.h>    // Character type functions
-  #include <stdbool.h>  // Boolean type
-  #include <string.h>   // String operations
-  ```
+### 5. Poker
+- 5-card poker implementation
+- Highest card wins
+- Double your money on wins
 
 ## 📦 Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/casino-royal.git
-cd casino-royal
+git clone https://github.com/Satya-Siba-Nayak/The-Sting-crime.git
+cd The-Sting-crime
 ```
 
 2. Compile the program:
 ```bash
 # Using GCC
-gcc -o casino_royal main.c -Wall -Wextra
-
-# Using Clang
-clang -o casino_royal main.c -Wall -Wextra
+gcc -o casino main.c -Wall -Wextra
 
 # Using Visual Studio Command Line
-cl /W4 main.c /Fe:casino_royal.exe
+cl /W4 main.c /Fe:casino.exe
 ```
 
 3. Run the program:
 ```bash
 # Linux/macOS
-./casino_royal
+./casino
 
 # Windows
-casino_royal.exe
+casino.exe
 ```
 
 ## 🎮 Usage
 
-### Main Menu Navigation
+### Main Menu
 ```
 === Casino Royal ===
 1. Play Games
@@ -193,7 +109,7 @@ casino_royal.exe
 5. Exit
 ```
 
-### Games Menu
+### Game Selection
 ```
 === Games Menu ===
 1. Number Guessing
@@ -204,115 +120,29 @@ casino_royal.exe
 6. Return to Main Menu
 ```
 
-### Basic Commands
-- Enter numerical choices for menu selection
-- Use 'y' or 'n' for yes/no prompts
-- Use 'h' or 's' for hit/stand in Blackjack
-- Press Ctrl+C to exit at any time
+## 🎲 Game Rules
 
-## 🏗️ Architecture
+### Blackjack
+- Aim to get closer to 21 than the dealer
+- Aces = 11 or 1
+- Face cards = 10
+- Number cards = Face value
+- Dealer must hit on 16 and below
 
-### Component Structure
-```
-casino_royal/
-├── main.c             # Main program file
-├── structures/        # Data structures
-│   ├── Card.h        # Card structure
-│   └── Hand.h        # Hand structure
-├── games/            # Game implementations
-├── utils/            # Utility functions
-└── tests/            # Test files
-```
-
-### Key Components
-
-#### Card Structure
-```c
-typedef struct {
-    int value;        // Numerical value
-    char suit;        // H, D, C, S
-    char rank;        // A, 2-10, J, Q, K
-} Card;
-```
-
-#### Hand Structure
-```c
-typedef struct {
-    Card cards[5];    // Array of cards
-    int numCards;     // Current number of cards
-} Hand;
-```
-
-### Memory Management
-- Static array allocation for cards
-- No dynamic memory allocation
-- Efficient memory usage
-- Zero memory leaks
-
-## 🛠️ Development
-
-### Code Style Guide
-- Indentation: 4 spaces
-- Function names: camelCase
-- Constants: UPPER_CASE
-- Variables: camelCase
-- Comprehensive comments
-- Clear function documentation
-
-### Adding New Games
-1. Create game function:
-```c
-void playNewGame(int* wallet) {
-    printf("\n=== New Game ===\n");
-    // Game implementation
-}
-```
-
-2. Update games menu
-3. Add function prototype
-4. Implement game logic
-5. Add test cases
-
-## 🧪 Testing
-
-### Manual Testing
-```bash
-# Compile with debug flags
-gcc -o casino_royal main.c -DDEBUG -Wall -Wextra
-
-# Run with test mode
-./casino_royal --test
-```
-
-### Test Cases
-- Input validation
-- Boundary conditions
-- Game logic verification
-- Memory usage monitoring
-- Error handling
+### Poker
+- 5 cards dealt to each player
+- Highest card wins
+- Double your bet on winning
+- Suits: Hearts (H), Diamonds (D), Clubs (C), Spades (S)
 
 ## 👥 Contributing
 
-### Getting Started
+Feel free to contribute to this project:
 1. Fork the repository
-2. Create feature branch
-3. Commit changes
-4. Push to branch
-5. Open pull request
-
-### Contribution Guidelines
-- Follow existing code style
-- Add unit tests
-- Update documentation
-- Test thoroughly
-- Keep PRs focused
-
-### Development Process
-1. Choose an issue to work on
-2. Discuss approach in issue
-3. Implement solution
-4. Add tests
-5. Submit PR
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## 📄 License
 
@@ -320,23 +150,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## ⚠️ Disclaimer
 
-This software is:
-- For entertainment purposes only
-- Not for real money gambling
-- A simulation/educational tool
-- Not affiliated with any real casino
-- Not to be used by minors
-
-## 🤝 Support
-
-- Report bugs via Issues
-- Request features via Discussions
-- Email: support@example.com
+This software is for entertainment purposes only. No real money gambling is involved or should be used with this program.
 
 ---
 
 <div align="center">
-Made with ❤️ by [Satya siba Nayak]
+Created with ❤️ by <a href="https://github.com/Satya-Siba-Nayak">Satya Siba Nayak</a>
 
-Star ⭐ this repository if you find it helpful!
+⭐ Star this repository if you find it helpful!
 </div>
