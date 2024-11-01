@@ -150,7 +150,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## ⚠️ Disclaimer
 
-This software is for entertainment purposes only. No real commit money gambling is involved or should be used with this program.
+This software is for entertainment purposes only. No real commit spam money gambling is involved or should be used with this program.
 
 ---
 
