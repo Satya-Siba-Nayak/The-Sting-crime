@@ -236,6 +236,7 @@ void playBlackjack(int* wallet) {
         
         int cardIndex = 4;
         int playerTotal = playerHand.cards[0].value + playerHand.cards[1].value;
+        //great so you are reading all of this !?
         int dealerTotal = dealerHand.cards[0].value + dealerHand.cards[1].value;
         
         printf("Your hand: ");
