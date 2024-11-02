@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include <string.h>
 
-// Constants
+// Constants tit
 #define INITIAL_WALLET 1000
 #define MIN_BET 10
 #define MAX_BET 500
