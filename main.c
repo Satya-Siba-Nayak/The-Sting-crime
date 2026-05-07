@@ -3,7 +3,6 @@
 #include <time.h>
 #include <ctype.h>
 #include <stdbool.h>
-#include <string.h>
 
 // Constants 
 #define INITIAL_WALLET 1000
@@ -45,6 +44,9 @@ void playDiceGame(int* wallet);
 void playCoinFlipGame(int* wallet);
 void playBlackjack(int* wallet);
 void playPoker(int* wallet);
+void depositFunds(int* wallet);
+void withdrawFunds(int* wallet);
+
 
 // Utility functions
 void initializeDeck(Card deck[]) {
@@ -442,6 +444,44 @@ void playPoker(int* wallet) {
         printf("Current wallet: $%d\n", *wallet);
     } while (*wallet >= MIN_BET && playAgain());
 }
+
+void depositFunds(int* wallet) {
+    int amount;
+    printf("\n=== Deposit Funds ===\n");
+    printf("Enter amount to deposit: $");
+    if (scanf("%d", &amount) != 1) {
+        clearInputBuffer();
+        printf("Invalid input.\n");
+        return;
+    }
+    clearInputBuffer();
+    if (amount <= 0) {
+        printf("Invalid amount.\n");
+    } else {
+        *wallet += amount;
+        printf("Successfully deposited $%d. New balance: $%d\n", amount, *wallet);
+    }
+}
+
+void withdrawFunds(int* wallet) {
+    int amount;
+    printf("\n=== Withdraw Funds ===\n");
+    printf("Current balance: $%d\n", *wallet);
+    printf("Enter amount to withdraw: $");
+    if (scanf("%d", &amount) != 1) {
+        clearInputBuffer();
+        printf("Invalid input.\n");
+        return;
+    }
+    clearInputBuffer();
+    if (amount <= 0 || amount > *wallet) {
+        printf("Invalid amount or insufficient funds.\n");
+    } else {
+        *wallet -= amount;
+        printf("Successfully withdrew $%d. New balance: $%d\n", amount, *wallet);
+    }
+}
+
 // Main function
 int main() {
     int wallet = INITIAL_WALLET;
@@ -457,9 +497,11 @@ int main() {
         
         switch (choice) {
             case 1: {
+                int gameChoice;
                 do {
                     displayGamesMenu();
-                    int gameChoice = getMenuChoice(1, 6);
+                    gameChoice = getMenuChoice(1, 6);
+
                     
                     switch (gameChoice) {
                         case 1:
@@ -480,7 +522,9 @@ int main() {
                         case 6:
                             break;
                     }
-                } while (choice != 6 && wallet >= MIN_BET);
+                } while (gameChoice != 6 && wallet >= MIN_BET);
+
+
                 
                 if (wallet < MIN_BET) {
                     printf("Insufficient funds to continue playing.\n");
@@ -492,11 +536,12 @@ int main() {
                 printf("Current wallet balance: $%d\n", wallet);
                 break;
             case 3:
-                printf("Deposit functionality coming soon!\n");
+                depositFunds(&wallet);
                 break;
             case 4:
-                printf("Withdraw functionality coming soon!\n");
+                withdrawFunds(&wallet);
                 break;
+
             case 5:
                 printf("Thanks for playing! Final balance: $%d\n", wallet);
                 running = false;

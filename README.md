@@ -81,7 +81,10 @@ cd The-Sting-crime
 
 2. Compile the program:
 ```bash
-# Using GCC
+# Using Makefile (Recommended)
+make
+
+# Manual compilation using GCC
 gcc -o casino main.c -Wall -Wextra
 
 # Using Visual Studio Command Line
@@ -90,10 +93,13 @@ cl /W4 main.c /Fe:casino.exe
 
 3. Run the program:
 ```bash
-# Linux/macOS
+# Using Makefile
+make run
+
+# Manual run (Linux/macOS)
 ./casino
 
-# Windows
+# Manual run (Windows)
 casino.exe
 ```
 
