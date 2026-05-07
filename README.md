@@ -23,7 +23,7 @@ A sophisticated command-line casino gaming system implemented in C, featuring mu
 - [License](#license)
 - [Disclaimer](#disclaimer)
 
-## ✨ Features
+## Features
 
 ### Core Features
 - 🎮 5 Classic Casino Games:
@@ -44,7 +44,7 @@ A sophisticated command-line casino gaming system implemented in C, featuring mu
 - 💫 Maximum Bet: $500
 - 📈 Real-time balance updates
 
-## 🎮 Available Games
+## Available Games
 
 ### 1. Number Guessing
 - Guess a number between 1-10
@@ -71,7 +71,7 @@ A sophisticated command-line casino gaming system implemented in C, featuring mu
 - Highest card wins
 - Double your money on wins
 
-## 📦 Installation
+## Installation
 
 1. Clone the repository:
 ```bash
@@ -103,7 +103,7 @@ make run
 casino.exe
 ```
 
-## 🎮 Usage
+## Usage
 
 ### Main Menu
 ```
@@ -126,7 +126,7 @@ casino.exe
 6. Return to Main Menu
 ```
 
-## 🎲 Game Rules
+## Game Rules
 
 ### Blackjack
 - Aim to get closer to 21 than the dealer
@@ -141,7 +141,7 @@ casino.exe
 - Double your bet on winning
 - Suits: Hearts (H), Diamonds (D), Clubs (C), Spades (S)
 
-## 👥 Contributing
+## Contributing
 
 Feel free to contribute to this project:
 1. Fork the repository
@@ -150,11 +150,11 @@ Feel free to contribute to this project:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## ⚠️ Disclaimer
+## Disclaimer
 
 This software is for entertainment purposes only. No real money gambling is involved or should be used with this program.
 
